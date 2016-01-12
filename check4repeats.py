@@ -10,7 +10,10 @@ import sys
 def checkdoc():
 	# The following block of code takes a user identified file 
 	# and opens it and reads its contents
-	file_name = raw_input("Enter file name: ")
+	try:
+		file_name = sys.argv[1]
+	except IndexError:
+		file_name = raw_input("Enter file name: ")
 
 	# strips all backslashes from path and file name. 
 	## these backlashes are created if you drag a file into the terminal
@@ -19,7 +22,7 @@ def checkdoc():
 		if "\\" in file_name:
 			the_file = file_name.replace("\\", '')
 		else:
-			pass	
+			the_file = file_name	
 
 	opened_file = open(the_file, 'r+')
 	read_file = opened_file.read()
