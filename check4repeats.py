@@ -7,14 +7,7 @@ For example, "Let's go to the the movies."
 """
 import sys
 
-def checkdoc():
-	# The following block of code takes a user identified file 
-	# and opens it and reads its contents
-	try:
-		file_name = sys.argv[1]
-	except IndexError:
-		file_name = raw_input("Enter file name: ")
-
+def checkdoc(file_name):
 	# strips all backslashes from path and file name. 
 	## these backlashes are created if you drag a file into the terminal
 	## and the file is in a director with spaces in its name
@@ -83,11 +76,18 @@ def checkdoc():
 
 if __name__ == "__main__":
 	print "\nCHECK FOR REPEATS\n"
-	checkdoc()
+	
+	try:
+		file_name = sys.argv[1]
+	except IndexError:
+		file_name = raw_input("Enter file name: ")
+
+	checkdoc(file_name)
 	while True:
 		choice = raw_input("Check New File? Y/N: ")
 		if choice.lower() == 'y':
-			checkdoc()
+			file_name = raw_input("Enter file name: ")
+			checkdoc(file_name)
 		else:
 			break
 
