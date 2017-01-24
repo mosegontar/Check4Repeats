@@ -21,12 +21,9 @@ def find_dupes(word_list):
     # is the same as the one immediately preceding it.
     duplicates = []
     for i in range(len(word_list)):
-        
         if word_list[i] == word_list[i-1]:
-            print word_list[i]
             if word_list[i].isalpha():     
                 joined_string = join_dupes(word_list[i-2:i+2])
-
                 duplicates.append(joined_string)
     return duplicates
 
