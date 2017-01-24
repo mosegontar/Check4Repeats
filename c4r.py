@@ -8,30 +8,26 @@ For example, "Let's go to the the movies."
 
 import sys
 
-def join_dupes(first, dupe_one, dupe_two, fourth):
-    
-    second = '*' + dupe_one
-    third = dupe_two + '*'
+def join_dupes(words):
 
-    return " ".join([first, second, third, fourth])
+    words[1] = '*' + words[1]
+    words[2] = words[2] + '*'
+
+    return ' '.join(words)
 
 def find_dupes(word_list):
 
     # Searches through the list for instances when the (i)th word 
     # is the same as the one immediately preceding it.
     duplicates = []
-    for word in range(len(word_list)):
+    for i in range(len(word_list)):
         
-        if word_list[word] == (word_list[word-1]):
-            
-            if word_list[word].isalpha():     
-                joined_string = join_dupes(word_list[word-2], 
-                                           word_list[word-1], 
-                                           word_list[word], 
-                                           word_list[word+1])
+        if word_list[i] == word_list[i-1]:
+            print word_list[i]
+            if word_list[i].isalpha():     
+                joined_string = join_dupes(word_list[i-2:i+2])
 
                 duplicates.append(joined_string)
-
     return duplicates
 
 
