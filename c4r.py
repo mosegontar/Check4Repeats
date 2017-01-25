@@ -48,13 +48,13 @@ def checkdoc(file_name):
 
     for index, instances in enumerate(duplicates):
         print "[%d]" % (index + 1), instances
-
+    print
 
 if __name__ == "__main__":
     print
     file_names = sys.argv[1:]
     while file_names:
         checkdoc(file_names.pop())
-        print
+
 
     
